@@ -1,34 +1,31 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        tabBarActiveTintColor: '#3B82F6',
+        tabBarInactiveTintColor: '#94A3B8',
+        tabBarStyle: { height: 60, paddingBottom: 8, paddingTop: 8 },
+        headerStyle: { backgroundColor: '#FFF' },
+        headerTitleStyle: { fontWeight: '600', color: '#1E293B' },
+      }}
+    >
       <Tabs.Screen
         name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
+        options={{ title: 'Home', headerTitle: 'Lingua' }}
       />
       <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+        name="learn"
+        options={{ title: 'Learn', headerTitle: 'Daily Lesson' }}
+      />
+      <Tabs.Screen
+        name="review"
+        options={{ title: 'Review', headerTitle: 'Quick Review' }}
+      />
+      <Tabs.Screen
+        name="stats"
+        options={{ title: 'Stats', headerTitle: 'My Progress' }}
       />
     </Tabs>
   );
